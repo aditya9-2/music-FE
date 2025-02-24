@@ -27,7 +27,7 @@ const FeaturedCourses = () => {
     }));
 
     return (
-        <div className="px-8 min-h-screen">
+        <div className="px-8 min-h-screen mt-8">
 
             <div className='text-center'>
                 <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent cursor-pointer hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 mb-6">
