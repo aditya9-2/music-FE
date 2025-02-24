@@ -1,10 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+const { default: flattenColorPalette, } = require("tailwindcss/lib/util/flattenColorPalette");
 import type { Config } from "tailwindcss";
-// const colors = require("tailwindcss/colors");
-// const {
-//   default: flattenColorPalette,
 
-// } = require("tailwindcss/lib/util/flattenColorPalette")
+
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
 
 export default {
   content: [
@@ -38,5 +48,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    addVariablesForColors,
+  ],
 } satisfies Config;
+
